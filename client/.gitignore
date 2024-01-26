@@ -33,6 +33,8 @@ yarn-error.log*
 *.png
 *.jpg
 
+*.txt
+
 
 # vercel
 .vercel
