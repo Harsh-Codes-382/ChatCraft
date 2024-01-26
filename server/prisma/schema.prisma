@@ -1,0 +1,34 @@
+// This is your Prisma schema file
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model User{
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  email         String   @unique
+  name          String   
+  profilePhoto  String   @default("")
+  about         String   @default("")
+  sentMessages  Messages[] @relation("sentMessages")
+  recievedMessages Messages[] @relation("recievedMessages")
+}
+
+// We are making relation of send/recieve messages with User model So, every user now have their recieved/send messages in DB with & we can access those messages becuse Messages have same senderId/receiverId as User id
+
+model Messages{
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  sender        User @relation("sentMessages", fields:[senderId], references: [id]) // Sender will store the object of user who is sending
+  senderId      String  @db.ObjectId  // This will store only the id of that sender user 
+  reciever      User @relation("recievedMessages", fields:[receiverId], references: [id]) // reciever will store the object of user who is receiving
+  receiverId    String  @db.ObjectId
+  type          String @default("text")
+  message       String  
+  messageStatus String  @default("Sent")
+  createdAt     DateTime @default(now())  
+}
