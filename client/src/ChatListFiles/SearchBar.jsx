@@ -4,7 +4,7 @@ import { BsFilter } from 'react-icons/bs'
 import { useStateProvider } from "../Context/StateContext";
 import { reducerCases } from "../Context/Constants";
 
-const SearchBar = () => {
+const SearchBar = () => {   
   const [{ contactSearch }, dispatch] = useStateProvider();
 
   return (
