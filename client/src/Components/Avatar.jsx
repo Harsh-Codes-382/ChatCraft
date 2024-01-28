@@ -67,6 +67,7 @@ function Avatar({ type, image, setImage }) {
 
   const photoPickerChange = async (e) => {
     const file = e.target.files[0];
+    // Convert image into base64
     const reader = new FileReader();
     const data = document.createElement("img");
     reader.onload = function (event) {
@@ -74,6 +75,7 @@ function Avatar({ type, image, setImage }) {
       data.setAttribute("data-src", event.target.result);
     };
     reader.readAsDataURL(file);
+    // After the 1ms set the image to state
     setTimeout(() => {
       setImage(data.src);
     }, 100);
@@ -100,6 +102,7 @@ function Avatar({ type, image, setImage }) {
             onMouseEnter={() => setHover(true)}
             onMouseLeave={() => setHover(false)}
           >
+            {/* On hover show the contextMenu */}
             <div
               className={`bg-photopicker-overlay-background z-10 flex h-60 w-60 absolute top-0 left-0 items-center rounded-full justify-center flex-col text-center gap-2 
               ${hover ? "visible" : "hidden"}
@@ -130,7 +133,9 @@ function Avatar({ type, image, setImage }) {
           setContextMenu={setIsContextMenuVisible}
         />
       )}
+      {/* If photo is to be upload */}
       {grapPhoto && <PhotoPicker onChange={photoPickerChange} />}
+
       {showPhotoLibrary && (
         <PhotoLibrary
           setImage={setImage}
