@@ -47,7 +47,8 @@ const List = () => {
           :
           (userContacts.map((contact) => {
             return (
-              <ChatListItem data={...contact} key={contact.messageId} />
+              // data={...contact}
+              <ChatListItem data={contact} key={contact.messageId} />
             )
           }))
 
