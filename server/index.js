@@ -34,7 +34,7 @@ const io = new Server(server, {
 });
 
 // This is state that each entry only one time no repeated things we will be storing here userId
-global.onlineUsers = new Map(); // Map is data structure
+global.onlineUsers = new Map(); // Data Srtucture MAP
 
 io.on("connection", (socket) => {
   console.log("Connection Successfull");
@@ -50,9 +50,7 @@ io.on("connection", (socket) => {
   // This event will send msg & emit the recieve too when user send msg
   socket.on("send-msg", (data) => {
     const sendUserSocket = onlineUsers.get(data.to);
-    // console.log(onlineUsers.get(data?.to));
-    // console.log("message", data.message);
-    // console.log("socket id", sendUserSocket);
+
     if (sendUserSocket) {
       // If reciever user is online because onlineUsers has id of receiver user
       socket.to(sendUserSocket).emit("msg-recieve", {
