@@ -21,6 +21,7 @@ const Chatlist = () => {
   return (
     <div className='bg-panel-header-background flex flex-col max-h-screen z-20'>
       {
+        // Toggling the state so,  we can render this dynamic components
         PageType === 'default' && (
           <>
             <ChatListHeader />
