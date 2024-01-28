@@ -99,6 +99,9 @@ function Main() {
     if (redirectLogin) router.push("/login");
   }, [redirectLogin]);
 
+
+  // Getting the messages
+
   useEffect(() => {
     const getMessages = async () => {
       const {
