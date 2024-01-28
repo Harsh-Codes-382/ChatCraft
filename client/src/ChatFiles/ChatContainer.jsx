@@ -11,10 +11,7 @@ const VoiceMessage = dynamic(() => import('./VoiceMessage'), { ssr: false })
 
 const ChatContainer = () => {
     const [{ messages, currentChatUser, userInfo }, dispatch] = useStateProvider();
-    // console.log(messages)
-    useEffect(() => {
-        // console.log("CurrentChatUser: ", currentChatUser)
-    }, [])
+
 
     return (
         <div className='h-[80vh] w-full relative flex-grow overflow-auto custom-scrollbar'>
