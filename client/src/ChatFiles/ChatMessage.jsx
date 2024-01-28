@@ -59,6 +59,7 @@ const ChatMessage = () => {
                 from: userInfo?.id,
                 message: { ...data?.newMessage }
             })
+            
             dispatch({
                 type: reducerCases.ADD_MESSAGE,
                 newMessages: {
